@@ -1,0 +1,1 @@
+CREATE TYPE card_type AS ENUM ('magic', 'physical');
