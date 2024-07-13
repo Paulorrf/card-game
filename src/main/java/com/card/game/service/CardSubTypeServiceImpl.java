@@ -18,8 +18,8 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class CardSubTypeServiceImpl implements CardSubTypeService {
 
-    CardSubTypeRepository cardSubTypeRepository;
-    CardSubTypeMapper cardSubTypeMapper;
+    private final CardSubTypeRepository cardSubTypeRepository;
+    private final CardSubTypeMapper cardSubTypeMapper;
 
     @Override
     public CardSubTypeDTO save(CardSubTypeDTO cardSubTypeDTO) {

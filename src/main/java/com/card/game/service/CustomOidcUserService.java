@@ -20,17 +20,14 @@ import com.card.game.model.User;
 import com.card.game.repository.RoleRepository;
 import com.card.game.repository.UserRepository;
 
+import lombok.AllArgsConstructor;
+
 @Service
+@AllArgsConstructor
 public class CustomOidcUserService extends OidcUserService{
 
-    UserRepository userRepository;
-
-    RoleRepository roleRepository;
-
-    public CustomOidcUserService(UserRepository userRepository, RoleRepository roleRepository) {
-        this.userRepository = userRepository;
-        this.roleRepository = roleRepository;
-    }
+    private final UserRepository userRepository;
+    private final RoleRepository roleRepository;
 
     @Override
     public OidcUser loadUser(OidcUserRequest userRequest) throws OAuth2AuthenticationException {
