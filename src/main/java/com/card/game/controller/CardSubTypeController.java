@@ -2,6 +2,8 @@ package com.card.game.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,28 +25,33 @@ public class CardSubTypeController {
     private final CardSubTypeService cardSubTypeService;
 
     @PostMapping()
-    public CardSubTypeDTO createCardSubType(@RequestBody CardSubTypeDTO cardSubTypeDTO) {
-        return cardSubTypeService.save(cardSubTypeDTO);
+    public ResponseEntity<CardSubTypeDTO> createCardSubType(@RequestBody CardSubTypeDTO cardSubTypeDTO) {
+        var cardSubType = cardSubTypeService.save(cardSubTypeDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(cardSubType);
     }
 
     @GetMapping("/{id}")
-    public CardSubTypeDTO getCardSubTypeById(@PathVariable Long id) {
-        return cardSubTypeService.findById(id);
+    public ResponseEntity<CardSubTypeDTO> getCardSubTypeById(@PathVariable Long id) {
+        var cardSubType = cardSubTypeService.findById(id);
+        return ResponseEntity.ok(cardSubType);
     }
 
     @GetMapping("/name/{name}")
-    public CardSubTypeDTO getCardSubTypeByName(@PathVariable String name) {
-        return cardSubTypeService.findByName(name);
+    public ResponseEntity<CardSubTypeDTO> getCardSubTypeByName(@PathVariable String name) {
+        var cardSubType = cardSubTypeService.findByName(name);
+        return ResponseEntity.ok(cardSubType);
     }
 
     @GetMapping("/")
-    public List<CardSubTypeDTO> getAllCardSubTypes() {
-        return cardSubTypeService.findAll();
+    public ResponseEntity<List<CardSubTypeDTO>> getAllCardSubTypes() {
+        var cardSubType = cardSubTypeService.findAll();
+        return ResponseEntity.ok(cardSubType);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCardSubTypeById(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteCardSubTypeById(@PathVariable Long id) {
         cardSubTypeService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }
 
