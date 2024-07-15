@@ -5,13 +5,13 @@ import java.util.List;
 import com.card.game.dtos.CardSubTypeDTO;
 
 public interface CardSubTypeService {
-    CardSubTypeDTO save(CardSubTypeDTO cardSubTypeDTO);
+    CardSubTypeDTO createCardSubType(CardSubTypeDTO cardSubTypeDTO);
 
-    CardSubTypeDTO findById(Long id);
+    CardSubTypeDTO getCardSubTypeById(Long id);
 
-    CardSubTypeDTO findByName(String name);
+    CardSubTypeDTO getCardSubTypeByName(String name);
 
-    List<CardSubTypeDTO> findAll();
+    List<CardSubTypeDTO> getAllCardSubType();
 
-    void deleteById(Long id);
+    void deleteCardSubTypeById(Long id);
 }

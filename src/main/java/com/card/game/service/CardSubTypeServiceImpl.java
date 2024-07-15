@@ -22,7 +22,7 @@ public class CardSubTypeServiceImpl implements CardSubTypeService {
     private final CardSubTypeMapper cardSubTypeMapper;
 
     @Override
-    public CardSubTypeDTO save(CardSubTypeDTO cardSubTypeDTO) {
+    public CardSubTypeDTO createCardSubType(CardSubTypeDTO cardSubTypeDTO) {
         try {
             CardSubType cardSubType = cardSubTypeRepository.save(cardSubTypeMapper.cardSubTypeDTOTocardSubType(cardSubTypeDTO));
 
@@ -33,7 +33,7 @@ public class CardSubTypeServiceImpl implements CardSubTypeService {
     }
 
     @Override
-    public CardSubTypeDTO findById(Long id) {
+    public CardSubTypeDTO getCardSubTypeById(Long id) {
             Optional<CardSubType> cardSubTypeOp = cardSubTypeRepository.findById(id);
 
             if(cardSubTypeOp.isPresent()) {
@@ -44,7 +44,7 @@ public class CardSubTypeServiceImpl implements CardSubTypeService {
     }
 
     @Override
-    public CardSubTypeDTO findByName(String name) {
+    public CardSubTypeDTO getCardSubTypeByName(String name) {
         Optional<CardSubType> cardSubTypeOp = cardSubTypeRepository.findByName(name);
 
         if(cardSubTypeOp.isPresent()) {
@@ -55,7 +55,7 @@ public class CardSubTypeServiceImpl implements CardSubTypeService {
     }
 
     @Override
-    public List<CardSubTypeDTO> findAll() {
+    public List<CardSubTypeDTO> getAllCardSubType() {
         try {
             List<CardSubType> cardSubTypes = cardSubTypeRepository.findAll();
 
@@ -66,7 +66,7 @@ public class CardSubTypeServiceImpl implements CardSubTypeService {
     }
 
     @Override
-    public void deleteById(Long id) {
+    public void deleteCardSubTypeById(Long id) {
         try {
             cardSubTypeRepository.deleteById(id);
         } catch (Exception e) {
