@@ -2,6 +2,8 @@ package com.card.game.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+
 import com.card.game.dtos.CardDTO;
 
 public interface CardService {
@@ -12,7 +14,7 @@ public interface CardService {
 
     CardDTO getCardByTitle(String title);
 
-    List<CardDTO> getAllCards();
+    List<CardDTO> getAllCards(String title, Pageable page);
 
     void deleteCardById(Long id);
 }

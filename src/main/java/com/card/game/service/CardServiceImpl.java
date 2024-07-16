@@ -2,6 +2,7 @@ package com.card.game.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.card.game.dtos.CardDTO;
@@ -50,8 +51,8 @@ public class CardServiceImpl implements CardService{
     }
 
     @Override
-    public List<CardDTO> getAllCards() {
-        List<Card> cards = cardRepository.findAll();
+    public List<CardDTO> getAllCards(String title, Pageable page) {
+        List<Card> cards = cardRepository.findAllByTitle(title, page);
         return cardMapper.listCardToCardDTO(cards);
     }
 
