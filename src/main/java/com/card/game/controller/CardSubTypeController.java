@@ -26,31 +26,31 @@ public class CardSubTypeController {
 
     @PostMapping()
     public ResponseEntity<CardSubTypeDTO> createCardSubType(@RequestBody CardSubTypeDTO cardSubTypeDTO) {
-        var cardSubType = cardSubTypeService.save(cardSubTypeDTO);
+        var cardSubType = cardSubTypeService.createCardSubType(cardSubTypeDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(cardSubType);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<CardSubTypeDTO> getCardSubTypeById(@PathVariable Long id) {
-        var cardSubType = cardSubTypeService.findById(id);
+        var cardSubType = cardSubTypeService.getCardSubTypeById(id);
         return ResponseEntity.ok(cardSubType);
     }
 
     @GetMapping("/name/{name}")
     public ResponseEntity<CardSubTypeDTO> getCardSubTypeByName(@PathVariable String name) {
-        var cardSubType = cardSubTypeService.findByName(name);
+        var cardSubType = cardSubTypeService.getCardSubTypeByName(name);
         return ResponseEntity.ok(cardSubType);
     }
 
     @GetMapping("/")
     public ResponseEntity<List<CardSubTypeDTO>> getAllCardSubTypes() {
-        var cardSubType = cardSubTypeService.findAll();
+        var cardSubType = cardSubTypeService.getAllCardSubType();
         return ResponseEntity.ok(cardSubType);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCardSubTypeById(@PathVariable Long id) {
-        cardSubTypeService.deleteById(id);
+        cardSubTypeService.deleteCardSubTypeById(id);
         return ResponseEntity.noContent().build();
     }
 }
