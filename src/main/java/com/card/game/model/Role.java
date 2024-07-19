@@ -14,10 +14,10 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name = "roles")
+@Table(name = "user_roles")
 public class Role {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
