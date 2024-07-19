@@ -1,11 +1,7 @@
 package com.card.game.model;
 
-import com.card.game.enums.CardTypeEnum;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -29,15 +25,15 @@ public class Card {
     @Column(nullable = false, unique = true, length = 255)
     private String image;
 
-    @Column(nullable = false, unique = true, columnDefinition = "TEXT")
+    @Column(nullable = false, unique = true)
     private String description;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
-    private CardTypeEnum type;
+    @ManyToOne
+    @JoinColumn(name = "card_type_id")
+    private CardType cardType;
 
     @ManyToOne
-    @JoinColumn(name = "sub_type", nullable = false)
+    @JoinColumn(name = "sub_type_id")
     private CardSubType subType;
-
 }
+
