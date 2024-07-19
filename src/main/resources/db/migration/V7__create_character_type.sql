@@ -1,4 +1,4 @@
-create table character_type(
+CREATE TABLE IF NOT EXISTS character_type(
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) UNIQUE
+    name VARCHAR(255)
 );

@@ -1,4 +1,4 @@
-CREATE TABLE decks_cards (
+CREATE TABLE IF NOT EXISTS decks_cards (
     decks_id INTEGER,
     cards_id INTEGER,
     PRIMARY KEY (decks_id, cards_id),

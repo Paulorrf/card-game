@@ -1,4 +1,4 @@
-CREATE TABLE card_sub_type (
+CREATE TABLE IF NOT EXISTS card_sub_type (
     id SERIAL PRIMARY KEY,
-    name VARCHAR(255) UNIQUE
+    name VARCHAR(255)
 );
