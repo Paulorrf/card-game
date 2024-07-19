@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 
 import com.card.game.service.CustomOidcUserService;
 
@@ -23,11 +22,13 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.
             authorizeHttpRequests(auth -> {
+                auth.requestMatchers("/card").permitAll();
                 auth.requestMatchers("/teste").hasRole("USER");
-                auth.anyRequest().authenticated();
+                //auth.anyRequest().authenticated();
             })
             .csrf(c -> c
-                        .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())    
+                        .disable()
+                        //.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())    
             )
             //.oauth2Login(auth -> auth.userInfoEndpoint(uie -> uie.oidcUserService(null)))
             .oauth2Login(oal -> oal
