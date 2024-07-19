@@ -25,13 +25,16 @@ public class CardServiceImpl implements CardService{
 
     @Override
     public CardDTO createCard(CardDTO cardDTO) {
+        System.out.println("card service");
+        System.out.println(cardDTO.toString());
+
         
         try {
             var card = cardRepository.save(cardMapper.cardDTOToCard(cardDTO));
             return cardMapper.cardToCardDTO(card);
             
         } catch (Exception e) {
-            throw new DuplicateEntityException("A card with the title " + cardDTO.title() + "Already exist.", e);
+            throw new DuplicateEntityException("A card with the title " + cardDTO.title() + " Already exist.", e);
         }
         
     }
