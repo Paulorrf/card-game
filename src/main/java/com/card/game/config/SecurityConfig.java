@@ -22,7 +22,7 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.
             authorizeHttpRequests(auth -> {
-                auth.requestMatchers("/card").permitAll();
+                auth.requestMatchers("/card/**").permitAll();
                 auth.requestMatchers("/teste").hasRole("USER");
                 //auth.anyRequest().authenticated();
             })
@@ -38,6 +38,7 @@ public class SecurityConfig {
             .logout(l -> l
                         .logoutSuccessUrl("/").permitAll()        
             )
+            .cors(c -> c.disable())
             .build();
     }
 
